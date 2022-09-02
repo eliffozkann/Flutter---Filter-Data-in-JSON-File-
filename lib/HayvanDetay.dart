@@ -12,8 +12,8 @@ class HayvanDetay extends StatefulWidget {
 }
 
 class _HayvanDetayState extends State<HayvanDetay> {
-  var productName = "";
-  Hayvanlar? product;
+  var hayvanAdi = "";
+  Hayvanlar? hayvannn;
 
   @override
   void initState() {
@@ -27,8 +27,8 @@ class _HayvanDetayState extends State<HayvanDetay> {
     var productJson = jsonDecode(productString);
 
     setState(() {
-      product = Hayvanlar.fromJson(productJson);
-      productName = product!.isim!;
+      hayvannn = Hayvanlar.fromJson(productJson);
+      hayvanAdi = hayvannn!.isim!;
     });
 
     super.didChangeDependencies();
@@ -38,7 +38,7 @@ class _HayvanDetayState extends State<HayvanDetay> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(productName),
+        title: Text(hayvanAdi),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -54,7 +54,7 @@ class _HayvanDetayState extends State<HayvanDetay> {
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Image(
-                          image: NetworkImage(product!.image!),
+                          image: NetworkImage(hayvannn!.image!),
                         ),
                       ),
                     ),
@@ -62,7 +62,7 @@ class _HayvanDetayState extends State<HayvanDetay> {
                         margin: EdgeInsets.all(5.0),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Text((product!.isim.toString()),
+                          child: Text((hayvannn!.isim.toString()),
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
@@ -72,7 +72,7 @@ class _HayvanDetayState extends State<HayvanDetay> {
                         margin: EdgeInsets.all(5.0),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Text("Türü : ${product!.turu}",
+                          child: Text("Türü : ${hayvannn!.turu}",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 15.0,
@@ -85,7 +85,7 @@ class _HayvanDetayState extends State<HayvanDetay> {
                       padding: const EdgeInsets.all(10.0),
                       child: Container(
                           margin: EdgeInsets.all(5.0),
-                          child: Text(product!.aciklama!.toString(),
+                          child: Text(hayvannn!.aciklama!.toString(),
                               style: TextStyle(
                                   color: Colors.black, fontSize: 15.0))),
                     ),
